@@ -1,0 +1,42 @@
+# general settings
+name: SICAPv2_ABMIL_tumor3
+log_path: /data_sda/zql/MIL-WSI/logs/
+
+# datasets, dataloader and datamodule settings
+DataModule:
+  name: CrossValidationModule
+  n_splits: 5
+  split_path: /data_sda/zql/data/SICAPv2/SICAPv2_splits/
+  patient_level: false
+  dataset:
+    name: SICAPv2Dataset
+    path: /data_sdb/SICAP/SICAPv2/
+    feature_path: /data_sda/zql/data/SICAPv2/SICAPv2_feature/
+    tumor_type: [3]
+
+# model settings
+ModelModule:
+  name: ABMILModule
+  model:
+    name: ABMIL
+    n_classes: 2
+    gate: true
+  optimizer:
+    name: Adam
+    lr: 0.0001
+    weight_decay: 0.0001
+
+# trainer settings
+Trainer:
+  max_epochs: 200
+  deterministic: true
+  accumulate_grad_batches: 1
+  check_val_every_n_epoch: 1
+  log_every_n_steps: 20
+  num_sanity_val_steps: 0
+
+# callback settings (earlystop settings)
+Callbacks:
+  earlystop: true
+  monitor: 'val_loss'
+  patience: 10

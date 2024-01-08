@@ -1,0 +1,2 @@
+#OMP_NUM_THREADS=1 torchrun --nproc-per-node 4 /data_sda/zql/MIL-WSI/scripts/extract_features.py --launcher pytorch --dataset SICAPv2Dataset --data_path /data_sdb/SICAP/SICAPv2/ --feature_path /data_sda/zql/data/SICAPv2_feature/
+python /data_sda/zql/MIL-WSI/scripts/extract_features.py --dataset SICAPv2Dataset --data_path /data_sdb/SICAP/SICAPv2/ --feature_path /data_sda/zql/data/SICAPv2/SICAPv2_feature/

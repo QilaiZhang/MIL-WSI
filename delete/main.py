@@ -1,6 +1,6 @@
 import os
-from utils import load_callbacks
-from model import TransMIL
+from src.milwsi import load_callbacks
+from src.milwsi import TransMIL
 from dataset import ProstateDataModule
 
 from lightning.pytorch import Trainer
@@ -28,6 +28,6 @@ if __name__ == '__main__':
 
     # load trainer
     trainer = Trainer(devices=[2], enable_progress_bar=True, num_sanity_val_steps=0, max_epochs=5,
-                      accumulate_grad_batches=2, precision='16-mixed', logger=logger, callbacks=callbacks)
+                      accumulate_grad_batches=1, precision='16-mixed', logger=logger, callbacks=callbacks)
     trainer.fit(datamodule=data, model=model)
     trainer.test(datamodule=data, model=model)

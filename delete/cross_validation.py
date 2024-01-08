@@ -1,6 +1,6 @@
 import os
-from utils import load_callbacks
-from model import TransMIL
+from src.milwsi import load_callbacks
+from src.milwsi import TransMIL
 from dataset import ProstateDataModule
 
 from lightning.pytorch import Trainer

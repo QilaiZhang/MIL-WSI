@@ -7,8 +7,8 @@ import torch.nn.functional as F
 import torchmetrics
 import lightning.pytorch as pl
 
-from optimizer import RAdam
-from optimizer import Lookahead
+from ..optimizer import RAdam
+from ..optimizer import Lookahead
 from nystrom_attention import NystromAttention
 
 
